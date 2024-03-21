@@ -1,2 +1,5 @@
 __*
 .vscode
+venv
+.idea
+.DS_STORE
