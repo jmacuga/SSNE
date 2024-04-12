@@ -4,3 +4,4 @@ venv
 .idea
 .DS_STORE
 MiniProject2/train/train/*
+MiniProject2/src/split_folders.py
