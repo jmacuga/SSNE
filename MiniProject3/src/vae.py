@@ -7,15 +7,15 @@ class Encoder(nn.Module):
         super(Encoder, self).__init__()
 
         self.fc_1 = nn.Linear(input_dim, 1024)
-        # self.bn1 = nn.BatchNorm1d(1024)
-        self.fc_2 = nn.Linear(1024, hidden_dim)
-        # self.bn2 = nn.BatchNorm1d(hidden_dim)
-        # self.fc_3 = nn.Linear(1024, hidden_dim)
-        # self.bn3 = nn.BatchNorm1d(hidden_dim)
+        # self.bn1 = nn.BatchNorm1d(2048)
+        self.fc_2 = nn.Linear(1024, 256)
+        # self.bn2 = nn.BatchNorm1d(1024)
+        # self.fc_3 = nn.Linear(1024, 256)
+        # self.bn3 = nn.BatchNorm1d(256)
         self.LeakyReLU = nn.LeakyReLU(0.2)
         # self.dropout = nn.Dropout(0.1)
-        self.fc_mean = nn.Linear(hidden_dim, latent_dim)
-        self.fc_var = nn.Linear(hidden_dim, latent_dim)
+        self.fc_mean = nn.Linear(256, latent_dim)
+        self.fc_var = nn.Linear(256, latent_dim)
 
         self.training = True
 
@@ -42,11 +42,11 @@ class Encoder(nn.Module):
 class Decoder(nn.Module):
     def __init__(self, latent_dim, hidden_dim, output_dim):
         super(Decoder, self).__init__()
-        self.fc_1 = nn.Linear(latent_dim, hidden_dim)
-        # self.bn1 = nn.BatchNorm1d(hidden_dim)
+        self.fc_1 = nn.Linear(latent_dim, 256)
+        # self.bn1 = nn.BatchNorm1d(256)
 
-        self.fc_2 = nn.Linear(hidden_dim, 1024)
-        # self.bn2 = nn.BatchNsorm1d(1024)
+        self.fc_2 = nn.Linear(256, 1024)
+        # self.bn2 = nn.BatchNorm1d(1024)
 
         # self.fc_3 = nn.Linear(1024, 2048)
         # self.bn3 = nn.BatchNorm1d(2048)
